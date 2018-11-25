@@ -18,6 +18,14 @@ describe GildedRose do
 
       expect { gr.update_quality() }.to change { items[0].sell_in }.by(-1)
     end
+
+    it "decreases the #quality value" do
+      items = [Item.new("foo", 20, 20)]
+
+      gr = GildedRose.new(items)
+
+      expect { gr.update_quality() }.to change { items[0].quality }.by(-1)
+    end
   end
 
 end
