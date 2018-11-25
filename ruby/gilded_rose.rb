@@ -1,6 +1,7 @@
 class GildedRose
 
   def initialize(items)
+    # Do not alter items property
     @items = items
   end
 
@@ -53,6 +54,7 @@ class GildedRose
   end
 end
 
+# Do not alter Item class
 class Item
   attr_accessor :name, :sell_in, :quality
 
