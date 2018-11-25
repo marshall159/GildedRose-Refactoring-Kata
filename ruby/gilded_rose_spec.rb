@@ -26,6 +26,22 @@ describe GildedRose do
 
       expect { gr.update_quality() }.to change { items[0].quality }.by(-1)
     end
+
+    it "#quality is never negative" do 
+      items = [Item.new("foo", 0, 0)]
+
+      GildedRose.new(items).update_quality()
+
+      expect(items[0].quality).to be >= 0
+    end
+
+    it "#quality degrades twice as fast after sell by date has passed" do 
+    items = [Item.new("foo", 0, 20)]
+
+    gr = GildedRose.new(items)
+
+    expect { gr.update_quality() }.to change { items[0].quality }.by(-2)
+    end
   end
 
 end
