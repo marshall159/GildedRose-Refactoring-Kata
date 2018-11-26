@@ -62,6 +62,15 @@ describe GildedRose do
 
       expect { gr.update_quality() }.to change { items[0].quality }.by(-2)
     end
+
+    it "Sulfuras #sell_in and #quality does not decrease" do
+      items = [Item.new("Sulfuras, Hand of Ragnaros", 20, 20)]
+
+      gr = GildedRose.new(items)
+
+      expect(items[0].quality).to eq(20)
+      expect(items[0].sell_in).to eq(20)
+    end
   end
 
 end
