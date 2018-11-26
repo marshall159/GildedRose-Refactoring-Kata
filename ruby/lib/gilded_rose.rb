@@ -10,9 +10,9 @@ class GildedRose
 
       decrease_sell_in(item)
 
-      backstage_passes(item) if backstage_passes?(item)
+      backstage_passes_increase_quality_near_sellin(item) if backstage_passes?(item)
 
-      if item.name == "Aged Brie" or item.name == "Backstage passes to a TAFKAL80ETC concert"
+      if item.name == "Aged Brie" or backstage_passes?(item)
         increase_quality(item)
       else
         decrease_quality(item)
@@ -59,7 +59,7 @@ class GildedRose
     item.name == "Backstage passes to a TAFKAL80ETC concert"
   end
 
-  def backstage_passes(item)
+  def backstage_passes_increase_quality_near_sellin(item)
       if item.sell_in < 11
         increase_quality(item)
       end
