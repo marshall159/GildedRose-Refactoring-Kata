@@ -1,7 +1,6 @@
 class GildedRose
 
   def initialize(items)
-    # Do not alter items property
     @items = items
   end
 
@@ -60,29 +59,12 @@ class GildedRose
   end
 
   def backstage_passes(item)
-    # if item.name == "Backstage passes to a TAFKAL80ETC concert"
       if item.sell_in < 11
         increase_quality(item)
       end
       if item.sell_in < 6
         increase_quality(item)
       end
-    # end
   end
 
-end
-
-# Do not alter Item class
-class Item
-  attr_accessor :name, :sell_in, :quality
-
-  def initialize(name, sell_in, quality)
-    @name = name
-    @sell_in = sell_in
-    @quality = quality
-  end
-
-  def to_s()
-    "#{@name}, #{@sell_in}, #{@quality}"
-  end
 end

@@ -1,4 +1,5 @@
-require File.join(File.dirname(__FILE__), 'gilded_rose')
+require 'gilded_rose'
+require 'item'
 
 describe GildedRose do
   let(:items) { [Item.new("foo", 20, 20)] }
