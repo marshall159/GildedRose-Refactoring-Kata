@@ -22,11 +22,10 @@ class GildedRose
         if aged_brie?(item)
           increase_quality(item)
         else
-          if backstage_passes?(item)
-            backstage_after_concert(item)
-          else
-            decrease_quality(item)
-          end
+          decrease_quality(item)
+        end
+        if backstage_passes?(item)
+          backstage_after_concert(item)
         end
       end
 
