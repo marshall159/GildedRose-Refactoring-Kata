@@ -15,16 +15,16 @@ class GildedRose
         end
       else
         if item.quality < 50
-          item.quality = item.quality + 1
+          increase_quality(item)
           if item.name == "Backstage passes to a TAFKAL80ETC concert"
             if item.sell_in < 11
               if item.quality < 50
-                item.quality = item.quality + 1
+                increase_quality(item)
               end
             end
             if item.sell_in < 6
               if item.quality < 50
-                item.quality = item.quality + 1
+                increase_quality(item)
               end
             end
           end
@@ -42,16 +42,23 @@ class GildedRose
               end
             end
           else
-            item.quality = item.quality - item.quality
+            item.quality = item.quality - item.quality # Backstage passes after concert drops to zero
           end
         else
           if item.quality < 50
-            item.quality = item.quality + 1 # Backstage passes after concert drops to zero
+            increase_quality(item)
           end
         end
       end
     end
   end
+
+  private
+
+  def increase_quality(item)
+    item.quality += 1
+  end
+
 end
 
 # Do not alter Item class
