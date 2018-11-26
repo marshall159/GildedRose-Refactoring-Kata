@@ -12,9 +12,7 @@ class GildedRose
       decrease_sell_in(item)
 
       if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
-        if item.quality > 0
-          decrease_quality(item)
-        end
+        decrease_quality(item)
       else
         if quality_below_max?(item)
           increase_quality(item)
@@ -36,9 +34,7 @@ class GildedRose
       if item.sell_in < 0
         if item.name != "Aged Brie"
           if item.name != "Backstage passes to a TAFKAL80ETC concert"
-            if item.quality > 0
-              decrease_quality(item)
-            end
+            decrease_quality(item)
           else
             item.quality = item.quality - item.quality # Backstage passes after concert drops to zero
           end
@@ -59,7 +55,9 @@ class GildedRose
   end
 
   def decrease_quality(item)
-    item.quality -= 1
+    if item.quality > 0
+      item.quality -= 1
+    end
   end
 
   def decrease_sell_in(item)
