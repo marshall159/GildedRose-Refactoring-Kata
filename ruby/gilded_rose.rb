@@ -46,7 +46,7 @@ class GildedRose
           end
         else
           if item.quality < 50
-            item.quality = item.quality + 1
+            item.quality = item.quality + 1 # Backstage passes after concert drops to zero
           end
         end
       end
