@@ -66,6 +66,20 @@ describe GildedRose do
         expect(items[0].quality).to eq(20)
         expect(items[0].sell_in).to eq(20)
       end
+
+      it "sell_in and #quality change for other items" do
+        items = [
+          Item.new("Sulfuras, Hand of Ragnaros", 20, 20),
+          Item.new("foo", 20, 20)
+        ]
+
+        gr = GildedRose.new(items)
+
+        expect(items[0].quality).to eq(20)
+        expect(items[0].sell_in).to eq(20)
+        
+        expect { gr.update_quality() }.to change { items[1].sell_in }.by(-1)
+      end
     end
 
     context "Backstage passses" do 
