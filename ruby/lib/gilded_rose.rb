@@ -19,13 +19,12 @@ class GildedRose
       backstage_passes_increase_quality_near_sellin(item) if backstage_passes?(item)
 
       if item.sell_in < 0
+        backstage_after_concert(item) if backstage_passes?(item)
+        
         if aged_brie?(item)
           increase_quality(item)
         else
           decrease_quality(item)
-        end
-        if backstage_passes?(item)
-          backstage_after_concert(item)
         end
       end
 
