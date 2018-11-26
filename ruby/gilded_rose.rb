@@ -9,11 +9,11 @@ class GildedRose
     @items.each do |item|
       next if sulfuras?(item)
 
+      decrease_sell_in(item)
+
       if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
         if item.quality > 0
-          if item.name != "Sulfuras, Hand of Ragnaros"
-            decrease_quality(item)
-          end
+          decrease_quality(item)
         end
       else
         if quality_below_max?(item)
@@ -33,17 +33,11 @@ class GildedRose
         end
       end
 
-      if item.name != "Sulfuras, Hand of Ragnaros"
-        decrease_sell_in(item)
-      end
-
       if item.sell_in < 0
         if item.name != "Aged Brie"
           if item.name != "Backstage passes to a TAFKAL80ETC concert"
             if item.quality > 0
-              if item.name != "Sulfuras, Hand of Ragnaros"
-                decrease_quality(item)
-              end
+              decrease_quality(item)
             end
           else
             item.quality = item.quality - item.quality # Backstage passes after concert drops to zero
