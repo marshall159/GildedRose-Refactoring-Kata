@@ -15,14 +15,7 @@ class GildedRose
         decrease_quality(item)
       else
         increase_quality(item)
-        if item.name == "Backstage passes to a TAFKAL80ETC concert"
-          if item.sell_in < 11
-            increase_quality(item)
-          end
-          if item.sell_in < 6
-            increase_quality(item)
-          end
-        end
+        backstage_passes(item)
       end
 
       if item.sell_in < 0
@@ -60,6 +53,17 @@ class GildedRose
 
   def sulfuras?(item)
     item.name == "Sulfuras, Hand of Ragnaros"
+  end
+
+  def backstage_passes(item)
+    if item.name == "Backstage passes to a TAFKAL80ETC concert"
+      if item.sell_in < 11
+        increase_quality(item)
+      end
+      if item.sell_in < 6
+        increase_quality(item)
+      end
+    end
   end
 
 end
