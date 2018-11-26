@@ -35,12 +35,20 @@ describe GildedRose do
       expect(items[0].quality).to be >= 0
     end
 
+    it "“Aged Brie” increases in #quality the older it gets" do 
+      items = [Item.new("Aged Brie", 10, 48)]
+
+      gr = GildedRose.new(items)
+
+      expect { gr.update_quality() }.to change { items[0].quality }.by(1)
+    end
+
     it "#quality degrades twice as fast after sell by date has passed" do 
-    items = [Item.new("foo", 0, 20)]
+      items = [Item.new("foo", 0, 20)]
 
-    gr = GildedRose.new(items)
+      gr = GildedRose.new(items)
 
-    expect { gr.update_quality() }.to change { items[0].quality }.by(-2)
+      expect { gr.update_quality() }.to change { items[0].quality }.by(-2)
     end
   end
 
