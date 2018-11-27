@@ -8,7 +8,7 @@ describe GildedRose do
 
   describe "#update_quality" do
     it "does not change the name" do
-      items = [Item.new("foo", 0, 0)]
+      items = [InventoryItem.new("foo", 0, 0)]
 
       gilded_rose.update_quality()
 
@@ -24,7 +24,7 @@ describe GildedRose do
     end
 
     it "#quality is never negative" do 
-      items = [Item.new("foo", 0, 0)]
+      items = [InventoryItem.new("foo", 0, 0)]
 
       GildedRose.new(items).update_quality()
 
@@ -32,7 +32,7 @@ describe GildedRose do
     end
 
     it "“Aged Brie” increases in #quality the older it gets" do 
-      items = [Item.new("Aged Brie", 10, 48)]
+      items = [InventoryItem.new("Aged Brie", 10, 48)]
 
       gr = GildedRose.new(items)
 
@@ -40,7 +40,7 @@ describe GildedRose do
     end
 
     it "#quality is never more than 50" do 
-      items = [Item.new("Aged Brie", 10, 49)]
+      items = [InventoryItem.new("Aged Brie", 10, 49)]
 
       gr = GildedRose.new(items)
 
@@ -52,7 +52,7 @@ describe GildedRose do
     end
 
     it "#quality degrades twice as fast after sell by date has passed" do 
-      items = [Item.new("foo", 0, 20)]
+      items = [InventoryItem.new("foo", 0, 20)]
 
       gr = GildedRose.new(items)
 
@@ -61,7 +61,7 @@ describe GildedRose do
 
     context "Sulfuras" do
       it "#sell_in and #quality does not decrease" do
-        items = [Item.new("Sulfuras, Hand of Ragnaros", 20, 20)]
+        items = [InventoryItem.new("Sulfuras, Hand of Ragnaros", 20, 20)]
 
         GildedRose.new(items)
 
@@ -71,8 +71,8 @@ describe GildedRose do
 
       it "sell_in and #quality change for other items" do
         items = [
-          Item.new("Sulfuras, Hand of Ragnaros", 20, 20),
-          Item.new("foo", 20, 20)
+          InventoryItem.new("Sulfuras, Hand of Ragnaros", 20, 20),
+          InventoryItem.new("foo", 20, 20)
         ]
 
         gr = GildedRose.new(items)
@@ -86,7 +86,7 @@ describe GildedRose do
 
     context "Backstage passses" do 
       it "#quality increases by 2 when #sell_in is 10 days or less" do
-        items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 10, 30)]
+        items = [InventoryItem.new("Backstage passes to a TAFKAL80ETC concert", 10, 30)]
 
         gr = GildedRose.new(items)
 
@@ -94,7 +94,7 @@ describe GildedRose do
       end
 
       it "#quality increases by 3 when #sell_in is 5 days or less" do
-        items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 5, 30)]
+        items = [InventoryItem.new("Backstage passes to a TAFKAL80ETC concert", 5, 30)]
 
         gr = GildedRose.new(items)
 
@@ -102,7 +102,7 @@ describe GildedRose do
       end
 
       it "#quality drops to 0 after concert when #sell_in is < 0" do
-        items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 0, 30)]
+        items = [InventoryItem.new("Backstage passes to a TAFKAL80ETC concert", 0, 30)]
 
         GildedRose.new(items).update_quality()
 

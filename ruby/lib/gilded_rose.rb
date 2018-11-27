@@ -8,7 +8,7 @@ class GildedRose
     @items.each do |item|
       next if sulfuras?(item)
 
-      decrease_sell_in(item)
+      item.decrease_sell_in
 
       change_quality(item)
 
@@ -39,10 +39,6 @@ class GildedRose
     if item.quality > 0
       item.quality -= 1
     end
-  end
-
-  def decrease_sell_in(item)
-    item.sell_in -= 1
   end
 
   def past_sellin?(item)
