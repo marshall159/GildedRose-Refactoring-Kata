@@ -1,8 +1,9 @@
 require 'gilded_rose'
 require 'item'
+require 'inventory_item'
 
 describe GildedRose do
-  let(:items) { [Item.new("foo", 20, 20)] }
+  let(:items) { [InventoryItem.new("foo", 20, 20)] }
   let(:gilded_rose) { described_class.new(items) }
 
   describe "#update_quality" do
