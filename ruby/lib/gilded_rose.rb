@@ -14,7 +14,7 @@ class GildedRose
 
       backstage_passes_increase_quality_near_sellin(item) if backstage_passes?(item)
 
-      past_sellin(item)
+      past_sellin(item) if past_sellin?(item)
 
     end
   end
@@ -45,8 +45,11 @@ class GildedRose
     item.sell_in -= 1
   end
 
+  def past_sellin?(item)
+    item.sell_in < 0
+  end
+
   def past_sellin(item)
-    if item.sell_in < 0
       backstage_after_concert(item) if backstage_passes?(item)
 
       if aged_brie?(item)
@@ -54,7 +57,6 @@ class GildedRose
       else
         decrease_quality(item)
       end
-    end
   end
 
   def sulfuras?(item)
